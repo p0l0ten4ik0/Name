@@ -32,20 +32,27 @@ function addTask() {
 <style scoped>
 .add-task {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 12px;
+  margin-bottom: 18px;
+  align-items: center;
 }
 .add-task input {
-  padding: 6px;
-  border-radius: 4px;
-  border: 1px solid #f8f7f7;
+  flex: 1 1 auto;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #e6eef8;
 }
 button {
-  padding: 6px 12px;
-  background-color: #42b983;
+  padding: 10px 14px;
+  background: linear-gradient(180deg,#10b981,#059669);
   border: none;
   color: white;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(16,185,129,0.18);
 }
+
+button:hover { transform: translateY(-2px); }
 </style>

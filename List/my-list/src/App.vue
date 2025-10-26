@@ -21,7 +21,6 @@ const STORAGE_KEY = 'my-list-tasks'
 
 const tasks = ref<ITask[]>([])
 
-// load saved tasks or fallback to initial data
 onMounted(() => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
@@ -30,7 +29,6 @@ onMounted(() => {
       return
     }
   } catch (e) {
-    // ignore
   }
   tasks.value = [...tasksData]
 })

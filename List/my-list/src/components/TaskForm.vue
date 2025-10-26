@@ -31,7 +31,6 @@ const isEditing = ref(false)
 const editTitle = ref(props.task.title)
 const editText = ref(props.task.text)
 
-// keep local edits in sync when prop changes externally
 watch(() => props.task, (t) => {
   editTitle.value = t.title
   editText.value = t.text
@@ -42,7 +41,6 @@ function startEdit() {
 }
 
 function cancelEdit() {
-  // reset local values and close editor
   editTitle.value = props.task.title
   editText.value = props.task.text
   isEditing.value = false
@@ -65,32 +63,45 @@ function onDelete() {
 
 <style scoped>
 .task-card {
-  border: 1px solid #ffffff;
-  border-radius: 8px;
-  padding: 12px;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 14px;
+  background: linear-gradient(180deg, #0b1320, #071025);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: #e6eef8;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
 }
 
 .actions {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   gap: 8px;
 }
 
 .actions .delete {
-  background: #e04b4b;
+  background: linear-gradient(180deg,#ef4444,#d03b3b);
   color: #fff;
   border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(220,38,38,0.2);
+}
+
+.actions button {
+  background: linear-gradient(180deg,#111827,#0b1220);
+  color: #e6eef8;
+  border: 1px solid rgba(255,255,255,0.04);
 }
 
 .edit-form input {
   display: block;
   width: 100%;
   margin-bottom: 8px;
-  padding: 6px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  color: #e6eef8;
 }
+
+.edit-form input::placeholder { color: rgba(230,238,248,0.45); }
 </style>   
