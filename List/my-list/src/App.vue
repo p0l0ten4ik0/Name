@@ -1,41 +1,32 @@
 <template>
-  <div class="container">
+  <div class="app">
     <h1>Список дел</h1>
-    <div class="tasks">
-      <ListTask
-        v-for="task in tasks"
-        :key="task.id"
-        :task="task"
-      />
-    </div>
-    <p v-if="tasks.length === 0">Список дел пуст</p>
+
+    <AddTaskForm @add="addTask" />
+    <TaskList :tasks="tasks" />
   </div>
 </template>
 
 <script setup lang="ts">
-import ListTask from "./components/ListTask.vue";
+import { ref } from 'vue'
+import { tasksData } from './components/Task'
+import type { ITask } from './components/Class'
 
-const tasks = [
-  { id: "1", title: "Убраться", text: "Вынести мусор, помыть пол" },
-  { id: "2", title: "ДЗ по Веб", text: "Создать веб приложение на vue" },
-  { id: "3", title: "Отдых", text: "Зайти в SCX, Освоить touchdesign" },
-];
+import TaskList from './components/ListTask.vue'
+import AddTaskForm from './components/AddTask.vue'
+
+const tasks = ref<ITask[]>([...tasksData])
+
+function addTask(newTask: ITask) {
+  tasks.value.push(newTask)
+}
 </script>
 
-<style>
-body {
-  margin: 0;
-}
-
-.container {
+<style scoped>
+.app {
+  padding: 20px;
+  font-family: sans-serif;
   max-width: 600px;
-  margin: 0;
-  padding: 0; /* remove padding so header sits at exact top-left */
+  margin: 0 auto;
 }
-
-.tasks {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-</style> 
+</style>
